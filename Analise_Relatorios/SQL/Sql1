@@ -1,0 +1,29 @@
+
+Select * from Instituicao;
+Select * from Evento;
+Select * from Turma;
+Select * from Nivel;
+select * from aluno;
+
+
+Select I.Nome as Instituicao, T.Nome as Turma, T.idTurma, N.Nome as Nivel
+    from
+Instituicao I
+    left join 
+Turma T
+    on I.IdInstituicao = T.Instituicao_Id
+    left join
+Nivel N
+    on N.idNivel = T.Nivel_Id 
+
+
+
+Select  A.IdAluno, A.Nome, I.Nome as Instituicao, A.Turma_Id, T.Nome as Turma
+    from 
+Aluno A
+    inner join
+Turma T
+    on A.Turma_Id = T.IdTurma
+    inner join
+Instituicao I
+  on I.IdInstituicao = T.Instituicao_Id

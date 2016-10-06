@@ -1,0 +1,22 @@
+Select * from Arquivo;
+Select * from TipoArquivo;
+Select * from ItemArquivo;
+
+
+Select A.Nome, A.NomeFisico, A.Extensao, T.Nome as Tipo
+from 
+    Arquivo A
+inner join 
+    TipoArquivo T
+    ON A.TipoArquivo_Id = idTipoArquivo
+inner join
+    ItemArquivo I
+    ON A.IdArquivo = I.Arquivo_Id
+
+
+Select T.ItemQuestao_id, A.Nome, A.NomeFisico, A.Extensao
+    from 
+    ItemArquivo T
+inner join
+    Arquivo A
+    ON T.Arquivo_Id = A.IdArquivo

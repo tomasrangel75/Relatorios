@@ -1,0 +1,105 @@
+
+Select * from Disciplina;
+Select * from Area;
+
+
+select 
+    D.Nome as Disciplina, A.Nome as Area
+    
+    from
+Disciplina D
+    Left join
+Area A 
+    on D.IdDisciplina = A.Disciplina_Id
+
+
+
+
+
+
+Select * from QuestionarioDisciplina;
+Select * from Questionario;
+Select * from EstadoQuestionario;
+Select * from Questao;
+Select * from ItemQuestao;
+Select * from TipoQuestao;
+Select * from TipoItem;
+Select * from Salto;
+
+Select * from Aplicacao;
+
+
+Select  Q.IdQuestionario, Q.Nome, Q.Descricao, Q.RepetePergunta, D.Nome as Disciplina
+    from 
+Questionario Q
+    left join 
+QuestionarioDisciplina  QD
+    on Q.IdQuestionario = QD.Questionario_Id
+    left join
+Disciplina D
+    on QD.Disciplina_Id = D.IdDisciplina   
+
+
+
+
+Select 
+    Qu.Nome as Questionario, Q.idQuestao, Q.Titulo, T.Nome as TipoQuestao, Q.Proxima,  D.Nome as Disciplina, Q.QuestaoReplica, Q.Tentativas, Q.Cor, Q.Ordem, 
+    Q.PosicaoRespostas, Q.PosicaoPergunta, A.Nome as Area, Q.idBase, Q.Peso, Q.Tag, Q.Hint, Q.Enfileirada, Q.Ano, Q.Semestre, Q.Competencia       
+from 
+    Questao Q
+left join
+    TipoQuestao T
+    on Q.TipoQuestao_Id = T.IdTipoQuestao
+left Join
+    Disciplina D
+    on Q.Disciplina_Id = D.idDisciplina  
+left join 
+    Area A
+    on Q.Area_Id = A.idArea  
+left join 
+    Questionario Qu
+    on 
+    Q.Questionario_Id = Qu.IdQuestionario
+
+
+
+Select 
+       I.Questao_id, I.IdItemQuestao, I.OpcaoCorreta, I.EPergunta, I.Eresposta, I.ETentativa, I.OrdemTela, I.OrdemResposta, I.ContemImagem, I.ContemAudio, S.idSalto, S.QuestaoDestino_Id, S.SaltarAoErrar, S.VoltarDoSalto 
+from 
+    ItemQuestao I
+left join
+    salto S
+    on  I.idItemQuestao = S.ItemQuestao_Id
+
+
+
+
+
+Select 
+    Qu.Nome as Questionario, Q.idQuestao, Q.Titulo, T.Nome as TipoQuestao, Q.Proxima,  D.Nome as Disciplina, Q.QuestaoReplica, Q.Tentativas, Q.Cor, Q.Ordem, 
+    Q.PosicaoRespostas, Q.PosicaoPergunta, A.Nome as Area, Q.idBase, Q.Peso, Q.Tag, Q.Hint, Q.Enfileirada, Q.Ano, Q.Semestre, Q.Competencia,
+    I.IdItemQuestao, I.OpcaoCorreta, I.EPergunta, I.Eresposta, I.ETentativa, I.OrdemTela, I.OrdemResposta, I.ContemImagem, I.ContemAudio, S.idSalto, S.QuestaoDestino_Id,                         S.SaltarAoErrar, S.VoltarDoSalto        
+from 
+    Questao Q
+left join
+    TipoQuestao T
+    on Q.TipoQuestao_Id = T.IdTipoQuestao
+left Join
+    Disciplina D
+    on Q.Disciplina_Id = D.idDisciplina  
+left join 
+    Area A
+    on Q.Area_Id = A.idArea  
+left join 
+    Questionario Qu
+    on 
+    Q.Questionario_Id = Qu.IdQuestionario
+left join
+    ItemQuestao I
+    on Q.idQuestao = I.Questao_Id    
+left join
+    salto S
+    on  I.idItemQuestao = S.ItemQuestao_Id
+
+                
+    

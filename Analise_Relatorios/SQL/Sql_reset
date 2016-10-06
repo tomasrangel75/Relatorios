@@ -1,0 +1,16 @@
+delete from pontuacao;
+delete from resultado;
+
+delete from aluno;
+delete from turma;
+delete from instituicao;
+
+select * from instituicao;
+select * from turma;
+select * from aluno;
+
+
+select * from Resultado;
+Select * from Pontuacao;
+
+

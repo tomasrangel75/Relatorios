@@ -1,0 +1,58 @@
+
+1-----------------------------------------------------------------------------------------------------------------
+insert into instituicao (Nome, Descricao) values ("Irene Ribeiro", "Escola")
+insert into turma (nome, Instituicao_id) Values ("3A",1)
+
+
+
+2------------------------------------------------------------------------------------------------------------------
+select * from instituicao;
+
+select * from turma;
+select * from aluno;
+select * from questionario
+select * from questao
+
+select * from resultado
+select * from pontuacao
+
+DELETES
+************************************************************
+
+delete from aluno 
+delete from resultado
+delete  from pontuacao
+
+***********************************************************
+
+
+
+3------------------------------------------------------------------------------------------------------------------
+Select 
+    Qu.Nome as Questionario, Q.idQuestao, Q.Titulo, T.Nome as TipoQuestao, Q.Proxima,  D.Nome as Disciplina, Q.QuestaoReplica, Q.Tentativas, Q.Cor, Q.Ordem, 
+    Q.PosicaoRespostas, Q.PosicaoPergunta, A.Nome as Area, Q.idBase, Q.Peso, Q.Tag, Q.Hint, Q.Enfileirada, Q.Ano, Q.Semestre, Q.Competencia       
+from 
+    Questao Q
+inner join
+    TipoQuestao T
+    on Q.TipoQuestao_Id = T.IdTipoQuestao
+inner Join
+    Disciplina D
+    on Q.Disciplina_Id = D.idDisciplina  
+inner join 
+    Area A
+    on Q.Area_Id = A.idArea  
+inner join 
+    Questionario Qu
+    on 
+    Q.Questionario_Id = Qu.IdQuestionario
+    
+
+
+Select 
+A.Nome, r.*
+from 
+Resultado r
+inner join Aluno A
+on r.Aluno_id = A.idAluno 
+order by A.idAluno

@@ -1,0 +1,70 @@
+
+
+
+Select 
+
+distinct
+
+
+
+competencia,
+titulo,
+tipoquestao,
+
+CASE cor
+     WHEN "Red" THEN "Vermelho"
+     WHEN "Yellow" THEN "Amarelo"
+     WHEN "Green" THEN "Verde"
+     ELSE "Azul"
+END
+
+as Cor_
+,
+'' as EmptyCol,
+
+acertou
+
+from 
+
+(
+Select 
+   P.DataHora as Data, Al.Nome as Aluno, Qu.Nome as Questionario,Q.Ano, Q.Semestre, D.Nome as Disciplina, A.Nome as eixo, Q.Competencia, Q.idQuestao,S.QuestaoDestino_Id, Q.Titulo, T.Nome as TipoQuestao, Q.Tentativas, Q.Cor, Q.Hint, Q.Enfileirada, P.Acertou, P.Tempo, P.Tentativas as tentativasrealizadas, P.Clicks, S.idSalto,  S.SaltarAoErrar     
+from 
+    Questao Q
+inner join
+    TipoQuestao T
+    on Q.TipoQuestao_Id = T.IdTipoQuestao
+inner Join
+    Disciplina D
+    on Q.Disciplina_Id = D.idDisciplina  
+inner join 
+    Area A
+    on Q.Area_Id = A.idArea  
+inner join 
+    Questionario Qu
+    on 
+    Q.Questionario_Id = Qu.IdQuestionario
+inner join
+    ItemQuestao I
+    on Q.idQuestao = I.Questao_Id    
+inner join
+    salto S
+    on  I.idItemQuestao = S.ItemQuestao_Id
+inner join 
+    Pontuacao P
+    on P.Questao_id = Q.IdQuestao
+inner join Aluno Al
+    on P.Aluno_id = Al.idAluno
+
+            
+
+) as tb
+
+
+where eixo = "Eixo I - Processamento da informação"
+
+order by Data,eixo, competencia
+
+
+
+
